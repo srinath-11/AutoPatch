@@ -1,0 +1,21 @@
+autopatch:
+  schedule: "daily"
+  container_runtime: "podman"
+  registries:
+    dockerhub:
+      username: ""
+      password: ""
+  notifications:
+    email:
+      enabled: false
+      smtp_server: "smtp.gmail.com"
+      smtp_port: 587
+      sender_email: ""
+      sender_password: ""
+      recipient_email: ""
+  logging:
+    log_level: "INFO"
+    log_file: "D:\\projects\\srinath\\AutoPatch\\logs\\autopatch.log"
+    report_dir: "D:\\projects\\srinath\\AutoPatch\\logs\\reports"
+  containers:
+    exclude: []
