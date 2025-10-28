@@ -1,0 +1,32 @@
+2025-10-28 23:28:12,072 - autopatch - INFO - Starting AutoPatch update cycle
+2025-10-28 23:28:13,527 - autopatch - INFO - Found 0 running containers
+2025-10-28 23:28:13,529 - autopatch - INFO - Found 0 containers with updates
+2025-10-28 23:28:13,531 - autopatch - INFO - Report saved to D:\projects\srinath\AutoPatch\logs\reports\autopatch_report_20251028_232813.json
+2025-10-28 23:28:13,532 - autopatch - INFO - AutoPatch update cycle completed
+2025-10-28 23:29:30,695 - autopatch - INFO - Starting AutoPatch update cycle
+2025-10-28 23:29:31,679 - autopatch - INFO - Found 0 running containers
+2025-10-28 23:29:31,680 - autopatch - INFO - Found 0 containers with updates
+2025-10-28 23:29:31,681 - autopatch - INFO - Report saved to D:\projects\srinath\AutoPatch\logs\reports\autopatch_report_20251028_232931.json
+2025-10-28 23:29:31,682 - autopatch - INFO - AutoPatch update cycle completed
+2025-10-28 23:30:11,182 - autopatch - INFO - Starting AutoPatch update cycle
+2025-10-28 23:30:11,678 - autopatch - INFO - Found 0 running containers
+2025-10-28 23:30:11,678 - autopatch - INFO - Found 0 containers with updates
+2025-10-28 23:30:11,680 - autopatch - INFO - Report saved to D:\projects\srinath\AutoPatch\logs\reports\autopatch_report_20251028_233011.json
+2025-10-28 23:30:11,681 - autopatch - INFO - AutoPatch update cycle completed
+2025-10-28 23:41:56,089 - autopatch - INFO - Starting AutoPatch update cycle
+2025-10-28 23:41:56,541 - autopatch - INFO - Found 2 running containers
+2025-10-28 23:41:56,542 - autopatch - INFO - Checking updates for nginx-test
+2025-10-28 23:42:02,924 - autopatch - INFO - Update available for nginx-test
+2025-10-28 23:42:02,925 - autopatch - INFO - Checking updates for redis-test
+2025-10-28 23:42:08,305 - autopatch - INFO - Update available for redis-test
+2025-10-28 23:42:08,305 - autopatch - INFO - Found 2 containers with updates
+2025-10-28 23:42:08,752 - autopatch - INFO - Stopping container: nginx-test
+2025-10-28 23:42:09,996 - autopatch - INFO - Removing container: nginx-test
+2025-10-28 23:42:10,482 - autopatch - INFO - Creating new container: nginx-test
+2025-10-28 23:42:11,158 - autopatch - INFO - Successfully redeployed nginx-test
+2025-10-28 23:42:11,470 - autopatch - INFO - Stopping container: redis-test
+2025-10-28 23:42:12,236 - autopatch - INFO - Removing container: redis-test
+2025-10-28 23:42:12,713 - autopatch - INFO - Creating new container: redis-test
+2025-10-28 23:42:13,303 - autopatch - INFO - Successfully redeployed redis-test
+2025-10-28 23:42:13,306 - autopatch - INFO - Report saved to D:\projects\srinath\AutoPatch\logs\reports\autopatch_report_20251028_234213.json
+2025-10-28 23:42:13,307 - autopatch - INFO - AutoPatch update cycle completed

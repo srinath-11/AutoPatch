@@ -1,0 +1,24 @@
+{
+  "timestamp": "2025-10-28T23:42:13.304683",
+  "summary": {
+    "total_checked": 2,
+    "updated": 2,
+    "failed": 0
+  },
+  "details": [
+    {
+      "container_name": "nginx-test",
+      "old_image": "docker.io/library/nginx:alpine",
+      "new_image": "docker.io/library/nginx:alpine",
+      "timestamp": "2025-10-28T23:42:08.306286",
+      "status": "success"
+    },
+    {
+      "container_name": "redis-test",
+      "old_image": "docker.io/library/redis:alpine",
+      "new_image": "docker.io/library/redis:alpine",
+      "timestamp": "2025-10-28T23:42:11.158821",
+      "status": "success"
+    }
+  ]
+}
