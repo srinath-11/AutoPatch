@@ -2,7 +2,7 @@
 echo Setting up Windows Task Scheduler for AutoPatch...
 
 :: Create scheduled task to run daily at 2 AM
-schtasks /create /tn "AutoPatch-Updater" /tr "D:\projects\srinath\AutoPatch\autopatch.bat" /sc daily /st 02:00 /ru SYSTEM
+schtasks /create /tn "AutoPatch-Updater" /tr "C:\Users\moham\Projects\Linux project\AutoPatch\autopatch.bat" /sc daily /st 02:00 /ru SYSTEM
 
 echo.
 echo Scheduled task created!

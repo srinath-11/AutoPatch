@@ -1,5 +1,5 @@
 autopatch:
-  schedule: "daily"
+  schedule: "0 2 * * *"
   container_runtime: "podman"
   registries:
     dockerhub:
@@ -15,7 +15,7 @@ autopatch:
       recipient_email: ""
   logging:
     log_level: "INFO"
-    log_file: "D:\\projects\\srinath\\AutoPatch\\logs\\autopatch.log"
-    report_dir: "D:\\projects\\srinath\\AutoPatch\\logs\\reports"
+    log_file: "logs\\autopatch.log"
+    report_dir: "logs\\reports"
   containers:
     exclude: []

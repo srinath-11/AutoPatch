@@ -30,3 +30,20 @@
 2025-10-28 23:42:13,303 - autopatch - INFO - Successfully redeployed redis-test
 2025-10-28 23:42:13,306 - autopatch - INFO - Report saved to D:\projects\srinath\AutoPatch\logs\reports\autopatch_report_20251028_234213.json
 2025-10-28 23:42:13,307 - autopatch - INFO - AutoPatch update cycle completed
+2025-10-29 17:22:48,732 - autopatch - INFO - Starting AutoPatch update cycle
+2025-10-29 17:22:49,208 - autopatch - INFO - Found 2 running containers
+2025-10-29 17:22:49,208 - autopatch - INFO - Checking updates for nginx-test
+2025-10-29 17:22:54,179 - autopatch - INFO - Update available for nginx-test
+2025-10-29 17:22:54,180 - autopatch - INFO - Checking updates for redis-test
+2025-10-29 17:22:58,668 - autopatch - INFO - Update available for redis-test
+2025-10-29 17:22:58,668 - autopatch - INFO - Found 2 containers with updates
+2025-10-29 17:22:59,046 - autopatch - INFO - Stopping container: nginx-test
+2025-10-29 17:22:59,696 - autopatch - INFO - Removing container: nginx-test
+2025-10-29 17:23:00,304 - autopatch - INFO - Creating new container: nginx-test
+2025-10-29 17:23:00,960 - autopatch - INFO - Successfully redeployed nginx-test
+2025-10-29 17:23:01,344 - autopatch - INFO - Stopping container: redis-test
+2025-10-29 17:23:01,976 - autopatch - INFO - Removing container: redis-test
+2025-10-29 17:23:02,424 - autopatch - INFO - Creating new container: redis-test
+2025-10-29 17:23:03,052 - autopatch - INFO - Successfully redeployed redis-test
+2025-10-29 17:23:03,056 - autopatch - INFO - Report saved to logs\reports\autopatch_report_20251029_172303.json
+2025-10-29 17:23:03,057 - autopatch - INFO - AutoPatch update cycle completed

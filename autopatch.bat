@@ -2,7 +2,7 @@
 chcp 65001 > nul
 echo Starting AutoPatch...
 
-cd /d "D:\projects\srinath\AutoPatch"
+cd /d "C:\Users\moham\Projects\Linux project\AutoPatch"
 
 :: Check if Podman is available
 podman --version > nul 2>&1
