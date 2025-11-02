@@ -13,7 +13,11 @@ import {
   Alert,
   Button,
   Chip,
-  Paper
+  Paper,
+  Menu,
+  MenuItem,
+  ListItemIcon,
+  ListItemText,
 } from '@mui/material';
 import {
   Computer,
@@ -21,7 +25,11 @@ import {
   Update,
   List,
   Settings,
-  Refresh
+  Refresh,
+  Assessment, // New icon for reports
+  DataObject, // New icon for JSON
+  TableView, // New icon for CSV
+  PictureAsPdf, // New icon for PDF
 } from '@mui/icons-material';
 import { apiService } from '../services/api';
 
@@ -49,6 +57,38 @@ const Dashboard = () => {
   const [error, setError] = useState('');
   const [lastUpdate, setLastUpdate] = useState('');
   const [backendConnected, setBackendConnected] = useState(false);
+  const [reportMenuAnchorEl, setReportMenuAnchorEl] = useState(null);
+  const [isReportMenuOpen, setIsReportMenuOpen] = useState(false);
+
+  const handleReportMenuOpen = (event) => {
+    setReportMenuAnchorEl(event.currentTarget);
+    setIsReportMenuOpen(true);
+  };
+
+  const handleReportMenuClose = () => {
+    setReportMenuAnchorEl(null);
+    setIsReportMenuOpen(false);
+  };
+
+  const handleGenerateReport = async (format) => {
+    handleReportMenuClose();
+    try {
+      setLoading(true);
+      const response = await apiService.generateReport(format);
+      // Handle file download
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', `autopatch-report.${format}`);
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    } catch (err) {
+      setError('Failed to generate report.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const fetchData = async () => {
     try {
@@ -232,6 +272,39 @@ const Dashboard = () => {
               >
                 Run AutoPatch
               </Button>
+              <Button
+                variant="contained"
+                color="info"
+                startIcon={<Assessment />}
+                onClick={handleReportMenuOpen}
+                disabled={loading || !backendConnected}
+              >
+                Generate Report
+              </Button>
+              <Menu
+                anchorEl={reportMenuAnchorEl}
+                open={isReportMenuOpen}
+                onClose={handleReportMenuClose}
+              >
+                <MenuItem onClick={() => handleGenerateReport('json')}>
+                  <ListItemIcon>
+                    <DataObject />
+                  </ListItemIcon>
+                  <ListItemText primary="JSON" />
+                </MenuItem>
+                <MenuItem onClick={() => handleGenerateReport('csv')}>
+                  <ListItemIcon>
+                    <TableView />
+                  </ListItemIcon>
+                  <ListItemText primary="CSV" />
+                </MenuItem>
+                <MenuItem onClick={() => handleGenerateReport('pdf')}>
+                  <ListItemIcon>
+                    <PictureAsPdf />
+                  </ListItemIcon>
+                  <ListItemText primary="PDF" />
+                </MenuItem>
+              </Menu>
             </Box>
             {lastUpdate && (
               <Typography variant="caption" color="text.secondary" sx={{ mt: 1, display: 'block' }}>

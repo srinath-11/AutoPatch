@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, send_file
 from flask_cors import CORS
 import json
 import os
@@ -6,6 +6,9 @@ import logging
 from datetime import datetime
 import subprocess
 import platform
+import io
+import yaml
+from modules.report_generator import ReportGenerator
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for React frontend
@@ -13,6 +16,15 @@ CORS(app)  # Enable CORS for React frontend
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger('autopatch-api')
+
+# Load config
+config = {
+    'autopatch': {
+        'logging': {
+            'report_dir': 'logs/reports'
+        }
+    }
+}
 
 class AutoPatchManager:
     def __init__(self):
@@ -177,8 +189,9 @@ class AutoPatchManager:
             logger.error(f"Error getting system info: {e}")
             return {'error': str(e)}
 
-# Initialize AutoPatch manager
+# Initialize AutoPatch manager and Report Generator
 ap_manager = AutoPatchManager()
+report_generator = ReportGenerator(config)
 
 # Root endpoint
 @app.route('/')
@@ -191,11 +204,35 @@ def home():
             '/api/containers': 'Get running containers',
             '/api/check-updates': 'Check for container updates',
             '/api/run-update': 'Run AutoPatch update process',
-            '/api/system-info': 'Get system information'
+            '/api/system-info': 'Get system information',
+            '/api/generate-report': 'Generate a report of containers and updates'
         }
     })
 
 # API Routes
+@app.route('/api/generate-report', methods=['GET'])
+def generate_report():
+    try:
+        report_format = request.args.get('format', 'json')
+        containers = ap_manager.get_running_containers()
+        updates = ap_manager.check_updates()
+        data = {
+            'containers': containers,
+            'updates': updates
+        }
+        report_data, content_type = report_generator.generate_on_demand_report(data, report_format)
+
+        return send_file(
+            io.BytesIO(report_data),
+            mimetype=content_type,
+            as_attachment=True,
+            download_name=f'autopatch-report.{report_format}'
+        )
+    except Exception as e:
+        import traceback
+        logger.error(f"Error in /api/generate-report: {e}")
+        logger.error(traceback.format_exc())
+        return jsonify({'error': str(e)}), 500
 @app.route('/api/health', methods=['GET'])
 def health_check():
     return jsonify({

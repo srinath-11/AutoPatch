@@ -5,7 +5,7 @@ const API_BASE_URL = 'http://localhost:5000/api';
 // Create axios instance with default config
 const api = axios.create({
   baseURL: API_BASE_URL,
-  timeout: 15000, // Increased timeout for container operations
+  timeout: 60000, // Increased timeout for container operations
   headers: {
     'Content-Type': 'application/json',
   },
@@ -27,6 +27,9 @@ export const apiService = {
   
   // System info
   getSystemInfo: () => api.get('/system-info'),
+
+  // Reporting
+  generateReport: (format) => api.get(`/generate-report?format=${format}`, { responseType: 'blob' }),
 };
 
 // Request interceptor
